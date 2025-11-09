@@ -1,0 +1,61 @@
+{% extends 'complaints/base.html' %}
+{% load user_extras %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">
+  <div class="w-full max-w-2xl">
+    <h1 class="text-2xl font-bold mb-4 text-center">📝 Complaints</h1>
+
+    {% if user.is_authenticated %}
+    <form method="POST" class="bg-white shadow-lg rounded-lg p-6 w-full mb-8">
+        {% csrf_token %}
+        <textarea name="complaint" placeholder="Enter your complaint..."
+                  class="w-full border border-gray-300 p-2 rounded mb-3 h-24 focus:outline-none focus:ring"
+                  required></textarea>
+        <button type="submit"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full">
+            Submit Complaint
+        </button>
+    </form>
+    {% else %}
+    <p class="text-gray-700 text-center">
+      Please <a href="/login/" class="text-blue-600">login</a> to post complaints.
+    </p>
+    {% endif %}
+
+    <div class="space-y-4">
+        {% for c in complaints %}
+        <div class="bg-white p-4 shadow rounded">
+            <p class="text-gray-800"><strong>{{ c.user.username }}</strong>: {{ c.complaint }}</p>
+            <p class="text-sm text-gray-500">Importance: {{ c.importance }}/10</p>
+            <p class="text-sm mt-1">
+                Status:
+                {% if c.status == "Pending" %}
+                    <span class="text-yellow-600 font-semibold">{{ c.status }}</span>
+                {% elif c.status == "Noticed" %}
+                    <span class="text-blue-600 font-semibold">{{ c.status }}</span>
+                {% elif c.status == "Resolved" %}
+                    <span class="text-green-600 font-semibold">{{ c.status }}</span>
+                {% endif %}
+            </p>
+
+            {% if user.is_superuser or user|in_group:"Admin" %}
+            <div class="mt-2 flex space-x-2">
+                <a href="/update_status/{{ c.id }}?status=Pending"
+                   class="px-2 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600">Pending</a>
+                <a href="/update_status/{{ c.id }}?status=Noticed"
+                   class="px-2 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">Noticed</a>
+                <a href="/update_status/{{ c.id }}?status=Resolved"
+                   class="px-2 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600">Resolved</a>
+            </div>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p class="text-center text-gray-600">No complaints yet.</p>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

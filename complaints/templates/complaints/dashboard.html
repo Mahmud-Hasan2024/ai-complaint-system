@@ -1,0 +1,40 @@
+{% extends 'complaints/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">
+  <div class="w-full max-w-3xl">
+    <h1 class="text-3xl font-bold mb-6 text-center">📊 Admin Dashboard</h1>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-white p-4 shadow rounded">
+            <p class="text-gray-600">Total Complaints</p>
+            <p class="text-2xl font-bold">{{ stats.total_complaints }}</p>
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+            <p class="text-gray-600">Average Importance</p>
+            <p class="text-2xl font-bold">{{ stats.avg_importance }}</p>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-semibold mb-2 text-center">Top Users</h2>
+    <ul class="mb-6 bg-white p-4 rounded shadow">
+        {% for u in stats.top_users %}
+        <li class="text-center">{{ u.user__username }} - {{ u.count }} complaints</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="text-xl font-semibold mb-2 text-center">Recent Complaints</h2>
+    <div class="bg-white p-4 rounded shadow space-y-2">
+        {% for c in stats.recent_complaints %}
+        <p class="text-center">
+          <strong>{{ c.user.username }}</strong>: {{ c.complaint }}
+          ({{ c.importance }}/10) — 
+          <span class="font-semibold text-gray-700">{{ c.status }}</span>
+        </p>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
