@@ -5,104 +5,98 @@ It includes **Admin Dashboard**, **User Authentication**, and **Role-based Acces
 
 ---
 
+## 🌍 Live Demo & Repository
+
+- **🔗 Live Site:** https://ai-complaint-system-p1ox.onrender.com
+- **📁 GitHub Repository:** https://github.com/Mahmud-Hasan2024/ai-complaint-system
+
+---
+
 ## 🚀 Features
 
 ### 👤 User Features
-- 📝 Submit and manage personal complaints  
-- 📊 View complaint status (Pending, Noticed, or Resolved)  
-- 🔔 Receive real-time notifications about complaint updates  
-- 🗂️ View complaint history in **My Complaints** page  
+
+- 📝 Submit and manage personal complaints
+- 📊 View complaint status (Pending, Noticed, Resolved)
+- 🔔 Receive notifications
+- 🗂️ View complaint history
 
 ### 🛠️ Admin Features
-- 📋 View all submitted complaints  
-- 🧾 Change complaint status instantly (Pending / Noticed / Resolved)  
-- 👥 Manage users and oversee complaint statistics  
-- 📊 Dashboard with key metrics:
-  - Total Complaints  
-  - Average Importance Score  
-  - Top Users  
-  - Recent Complaints  
+
+- 📋 View all complaints
+- 🧾 Update status
+- 👥 Manage users
+- 📊 View dashboard metrics
 
 ---
 
 ## 🏗️ Tech Stack
 
-| Category | Technology |
-|-----------|-------------|
-| **Backend** | Django (Python) |
-| **Frontend** | HTML, TailwindCSS |
-| **Database** | SQLite (default), PostgreSQL (optional) |
-| **Authentication** | Django’s built-in auth system |
-| **Templating** | Django Templates |
-| **Role Handling** | Django Groups & Permissions |
+| Category     | Technology                  |
+| ------------ | --------------------------- |
+| **Backend**  | Django (Python)             |
+| **Frontend** | HTML, TailwindCSS           |
+| **Database** | SQLite / PostgreSQL         |
+| **Auth**     | Django Auth System          |
+| **Roles**    | Django Groups & Permissions |
 
 ---
 
 ## 🖼️ Pages Overview
 
-| Page | Description |
-|------|--------------|
-| **Home Page** | Users can post new complaints and view others’ complaints |
-| **My Complaints** | Lists all complaints by the logged-in user |
-| **Notifications** | Displays messages or updates related to user complaints |
-| **Dashboard (Admin)** | Shows statistics and allows managing complaint statuses |
-| **Login/Register** | Secure authentication and registration system |
+| Page                  | Description                      |
+| --------------------- | -------------------------------- |
+| **Home Page**         | Submit & view complaints         |
+| **My Complaints**     | List user-specific complaints    |
+| **Notifications**     | System updates                   |
+| **Dashboard (Admin)** | Analytics + complaint management |
+| **Login/Register**    | Secure forms                     |
 
 ---
 
-## 🔐 Role System
+## 🔐 Demo Credentials
 
-| Role | Permissions |
-|------|--------------|
-| 👤 **User** | Can post, view, and delete their own complaints |
-| 🧑‍💼 **Admin** | Can manage all complaints, change statuses, and view analytics |
-| 👑 **Superuser** | Full access including user/group management |
+### **Admin Accounts**
+
+| Role  | Username       | Password   |
+| ----- | -------------- | ---------- |
+| Admin | `admin_rashid` | `password` |
+| Admin | `admin_sadia`  | `password` |
+
+### **Normal Users**
+
+| Role | Username  | Password   |
+| ---- | --------- | ---------- |
+| User | `mahmud`  | `password` |
+| User | `fahim`   | `password` |
+| User | `sumaiya` | `password` |
+| User | `arif`    | `password` |
+| User | `nishat`  | `password` |
+
+---
+
+## 📄 Additional Documentation
+
+- 📦 **[Deployment Guide](DEPLOYMENT.md)**
+- 👨‍💻 **[About the Author](ABOUT_AUTHOR.md)**
+- 🪪 **[License](LICENSE.md)**
+
+Clicking the links will open the respective files.
 
 ---
 
 ## ⚙️ Setup Instructions
 
-Follow these steps to run the project locally 👇
-
-### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/AI-Complaint-System.git
-cd AI-Complaint-System
-```
-
-### 2️⃣ Create a Virtual Environment
-
-```bash
-python -m venv ai_env
-source ai_env/bin/activate   # For Mac/Linux
-ai_env\Scripts\activate      # For Windows
-```
-
-### 3️⃣ Install Dependencies
-
-```bash
+git clone https://github.com/Mahmud-Hasan2024/ai-complaint-system.git
+cd ai-complaint-system
+python -m venv env
+source env/bin/activate   # macOS/Linux
+env\Scripts\activate      # Windows
 pip install -r requirements.txt
-```
-
-### 4️⃣ Run Migrations
-
-```bash
 python manage.py migrate
-```
-
-### 5️⃣ Create a Superuser
-
-```bash
-python manage.py createsuperuser
-```
-
-### 6️⃣ Start the Server
-
-```bash
 python manage.py runserver
 ```
-
-Then open your browser and visit 👉 **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 
 ---
 
@@ -111,19 +105,17 @@ Then open your browser and visit 👉 **[http://127.0.0.1:8000](http://127.0.0.1
 ```bash
 AI-Complaint-System/
 │
-├── complaints/                # Core app
-│   ├── templates/complaints/  # HTML templates
-│   ├── views.py               # Application logic
-│   ├── models.py              # Database models
-│   ├── urls.py                # App routes
-│   └── ...
+├── complaints/
+│   ├── templates/complaints/
+│   ├── views.py
+│   ├── models.py
+│   ├── urls.py
 │
-├── ai_complaint_system/       # Project settings
+├── ai_complaint_system/
 │   ├── settings.py
 │   ├── urls.py
-│   └── ...
 │
-├── static/                    # CSS, JS, images
+├── static/
 ├── manage.py
 └── README.md
 ```
@@ -132,22 +124,18 @@ AI-Complaint-System/
 
 ## 🎨 UI Highlights
 
-✨ **Clean TailwindCSS UI**  
-📱 **Responsive on all devices**  
-🌈 **Beautiful dashboard cards and complaint layout**
+- ✨ Clean TailwindCSS UI
+- 📱 Fully Responsive
+- 🌈 Beautiful Admin Dashboard
 
 ---
 
 ## 💡 Future Improvements
 
--   🤖 Integrate AI-based complaint categorization
-    
--   📬 Add email or SMS notifications
-    
--   🕒 Implement complaint tracking timeline
-    
--   🌐 Multi-language support
-    
+- 🤖 AI-based complaint categorization
+- 📬 Email & SMS notifications
+- 🕒 Complaint timeline
+- 🌐 Multi-language support
 
 ---
 
@@ -155,15 +143,14 @@ AI-Complaint-System/
 
 **Mahamud Hasan**  
 Backend Developer & DevOps Enthusiast  
-📧 \[Your Email Here\]  
-🔗 [GitHub Profile](https://github.com/yourusername)
+📄 Learn more → **[ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)**
 
 ---
 
 ## 🪪 License
 
 This project is licensed under the **MIT License**.  
-Feel free to use and modify it with attribution.
+📄 Full text → **[LICENSE.md](LICENSE.md)**
 
 ---
 
