@@ -78,11 +78,25 @@ WSGI_APPLICATION = 'ai_complaints.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('default'),
+#         conn_max_age=int(config('conn_max_age', default=0))
+#     )
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('default'),
-        conn_max_age=int(config('conn_max_age', default=0))
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('dbname'),
+        'USER': config('user'),
+        'PASSWORD': config('password'),
+        'HOST': config('host'),
+        'PORT': config('port'),
+        'OPTIONS': {
+            'sslmode': 'require'
+        }
+    }
 }
 
 
